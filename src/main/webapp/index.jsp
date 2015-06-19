@@ -5,16 +5,26 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Photify</title>
+	
+	<script src="lib/bower_components/angular/angular.min.js"></script>
+	<script src="lib/bower_components/angular-route/angular-route.min.js"></script>
+	<script src="lib/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	<script src="lib/bower_components/angular-ui-utils/ui-utils.js"></script>
+	<script src="js/photify.module.js"></script>
+	<script src="js/album/albumService.js"></script>
+	<script src="js/album/albumController.js"></script>
+	
 	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	<link rel="stylesheet" type="text/css" href="lib/bower_components/bootstrap/dist/css/bootstrap.css" />
 </head>
-<body>
+<body ng-app="photify">
 	<div class="pageWrapper">
 		<div class="header">
 			<h1>Header goes here </h1>
 		</div>
 		<div class="main">
 			<div class="leftBar">
-				<h2>Left bar contents here</h2>
+				<div ng-include src="'components/left_bar.jsp'"></div>
 			</div>
 			<div class="content">
 				<h2>Main content here </h2>
