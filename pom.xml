@@ -15,6 +15,7 @@
         <gcloud.plugin.version>0.9.58.v20150505</gcloud.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>4.0.1.RELEASE</spring.version>
+        <jackson.version>1.9.10</jackson.version>
     </properties>
 
     <prerequisites>
@@ -39,7 +40,14 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-
+        
+		<!-- Jackson -->
+        <dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+        
 		<!-- Spring dependencies -->
 		<dependency>
 			<groupId>org.springframework</groupId>

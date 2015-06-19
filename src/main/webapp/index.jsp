@@ -19,9 +19,13 @@
 			<div class="content">
 				<h2>Main content here </h2>
 			</div>
-		</div>
-		<div class="footer">
-			<h2>Footer goes here </h2>
+			<div class="bottomBar">
+				<div class="infoBar">
+				</div>
+				<div class="pictureList">
+					
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
