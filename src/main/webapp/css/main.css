@@ -5,14 +5,21 @@ div.pageWrapper{
 div.header{
 	display:block;
 	width:100%;
-	height:20%;
+	height:100px;
 	border-bottom: 2px solid #000;
+	background-color:#00aced;
+	padding:10px;
+}
+
+div.header h1{
+	margin:0;
+	color:#FFF;
 }
 
 div.main{
 	display:block;
 	width:100%;
-	height:80%;
+	height:70%;
 }
 
 div.bottomBar{
@@ -31,4 +38,9 @@ div.leftBar{
 div.content{
 	height: 80%;
 	display: inline-block;
+}
+
+div.image_list img{
+	max-width:140px;
+	max-height:140px;
 }

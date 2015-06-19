@@ -1,7 +1,7 @@
-<div class="album_list" ng-controller="albumController">
+<div class="album_list">
 	<p>
 		<span>Albums </span>
-		<button type="button" class="btn btn-primary" ng-click="openCreateModal()">
+		<button type="button" class="btn btn-primary" ng-click="openCreateAlbumModal()">
 	    	New
 	    </button>
 	</p>

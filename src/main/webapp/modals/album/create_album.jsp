@@ -11,7 +11,7 @@
 	<button type="button" class="btn btn-primary">
     	Save
     </button>
-    <button type="button" class="btn btn-primary">
+    <button type="button" class="btn btn-primary" ng-click="cancel()">
     	Cancel
     </button>
 </div>
