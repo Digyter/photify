@@ -44,3 +44,12 @@ div.image_list img{
 	max-width:140px;
 	max-height:140px;
 }
+div.loading-message{
+	display:block;
+	width:200px;
+	height:50px;
+	margin-left:auto;	
+	margin-right:auto;
+	margin-top:20px;	
+	text-align:center;
+}

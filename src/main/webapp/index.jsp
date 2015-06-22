@@ -16,6 +16,7 @@
 	<script src="js/album/albumService.js"></script>
 	<script src="js/album/albumModalController.js"></script>
 	<script src="js/image/imageService.js"></script>
+	<script src="js/user/userService.js"></script>
 	<script src="js/image/imageModalController.js"></script>
 	<script src="js/gallery/galleryController.js"></script>
 	
@@ -23,12 +24,12 @@
 	<link rel="stylesheet" type="text/css" href="lib/bower_components/bootstrap/dist/css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="lib/bower_components/angular-ui-select/dist/select.css" />
 </head>
-<body ng-app="photify">
-	<div class="pageWrapper">
+<body ng-app="photify"  ng-controller="galleryController">
+	<div class="pageWrapper" ng-show="isLoggedIn">
 		<div class="header">
 			<div ng-include src="'components/header.jsp'"></div>
 		</div>
-		<div class="main" ng-controller="galleryController">
+		<div class="main">
 			<div class="leftBar">
 				<div ng-include src="'components/left_bar.jsp'"></div>
 			</div>
@@ -44,5 +45,6 @@
 			</div>
 		</div>
 	</div>
+	<div ng-hide="isLoggedIn" class="loading-message">Loading Photify...</div>
 </body>
 </html>

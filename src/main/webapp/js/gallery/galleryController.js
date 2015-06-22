@@ -1,15 +1,28 @@
 angular
 	.module('photify')
-	.controller('galleryController',['$scope', '$rootScope', '$modal', 'albumService', 'imageService', galleryController]);
+	.controller('galleryController',['$scope', '$rootScope', '$modal', 'albumService', 'imageService', 'userService', galleryController]);
 
-function galleryController(scope,rootScope,modal, albumService, imageService){
+function galleryController(scope,rootScope,modal, albumService, imageService, userService){
 	scope.albumList = [];
+	scope.isLoggedIn = false;
 	
-	//retrieve albums
-	albumService.listAlbums(1).then(function(response){
-		scope.albumList = response.data;
-	});
-	
+	//get user details
+	userService.getUserDetails().then(function(response){		
+		if(response.data){			
+			userDetails = response.data;
+			if(userDetails.signinUrl){
+				scope.isLoggedIn = false;
+				window.location.href = userDetails.signinUrl;	
+			}else{
+				scope.isLoggedIn = true;
+				//retrieve albums
+				albumService.listAlbums(userDetails.id).then(function(response){
+					scope.albumList = response.data;
+				});
+			}		
+		}
+	});	
+		
 	scope.openCreateAlbumModal = function(){
 		var modalInstance = modal.open({
 			animation: scope.animationsEnabled,
