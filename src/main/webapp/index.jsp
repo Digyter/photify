@@ -30,12 +30,14 @@
 			<div ng-include src="'components/header.jsp'"></div>
 		</div>
 		<div class="main">
-			<div class="leftBar">
-				<div ng-include src="'components/left_bar.jsp'"></div>
-			</div>
-			<div class="content">
-				<div ng-include src="'components/preview.jsp'"></div>
-				<div class="clear"></div>
+			<div class="twoColumn">
+				<div class="leftBar">
+					<div ng-include src="'components/left_bar.jsp'"></div>
+				</div>
+				<div class="content">
+					<div ng-include src="'components/preview.jsp'"></div>
+					<div class="clear"></div>
+				</div>
 			</div>
 			<div class="bottomBar">
 				<div class="infoBar">

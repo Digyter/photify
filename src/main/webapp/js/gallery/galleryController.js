@@ -12,7 +12,7 @@ function galleryController(scope,rootScope,modal, albumService, imageService, us
 	userService.getUserDetails().then(function(response){		
 		if(response.data){			
 			userDetails = response.data;
-			if(userDetails.signinUrl){
+			if(false){
 				scope.isLoggedIn = false;
 				window.location.href = userDetails.signinUrl;	
 			}else{
