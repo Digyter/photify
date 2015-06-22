@@ -4,6 +4,8 @@ angular
 
 function galleryController(scope,rootScope,modal, albumService, imageService, userService){
 	scope.albumList = [];
+	scope.imageList = [];
+	scope.currentImageUrl = '';
 	scope.isLoggedIn = false;
 	
 	//get user details
@@ -15,18 +17,33 @@ function galleryController(scope,rootScope,modal, albumService, imageService, us
 				window.location.href = userDetails.signinUrl;	
 			}else{
 				scope.isLoggedIn = true;
+				
 				//retrieve albums
-				albumService.listAlbums(userDetails.id).then(function(response){
+				albumService.listAlbums(1).then(function(response){
 					scope.albumList = response.data;
+				});
+				
+				//retrieve images
+				imageService.listImages(1).then(function(response){
+					scope.imageList = response.data;
 				});
 			}		
 		}
 	});	
-		
+
+	
 	scope.openCreateAlbumModal = function(){
 		var modalInstance = modal.open({
 			animation: scope.animationsEnabled,
 			templateUrl: 'modals/album/create_album.jsp',
+			controller: 'albumModalController'
+		});
+	}
+	
+	scope.openDeleteAlbumModal = function(){
+		var modalInstance = modal.open({
+			animation: scope.animationsEnabled,
+			templateUrl: 'modals/album/delete_album.jsp',
 			controller: 'albumModalController'
 		});
 	}
@@ -42,5 +59,9 @@ function galleryController(scope,rootScope,modal, albumService, imageService, us
 				}
 			}
 		});
+	}
+	
+	scope.setPreviewImageUrl = function(image){
+		scope.currentImageUrl = image.url;
 	}
 }

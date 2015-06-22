@@ -14,4 +14,14 @@ function imageService(http) {
 		    // or server returns response with an error status.
 		  });
 	}
+	
+	this.listImages = function(albumKey){
+		return http.get('/imageList/' + albumKey).
+		  success(function(data, status, headers, config) {
+			  return data;
+		  }).
+		  error(function(data, status, headers, config) {
+			  return "error";
+		  });
+	}
 }
