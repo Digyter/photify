@@ -108,7 +108,9 @@ function galleryController(scope,rootScope,modal, albumService, imageService, us
 	userService.getUserDetails().then(function(response){		
 		if(response.data.isUserLoggedIn){	
 			scope.isLoggedIn = true;			
-			rootScope.userKey = response.data.id;	
+			rootScope.userKey = response.data.id;
+			rootScope.userEmail = response.data.email;
+			rootScope.logoutURL = response.data.logoutURL;
 		}
 	});	
 	

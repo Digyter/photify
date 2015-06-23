@@ -21,6 +21,7 @@
 	<script src="js/gallery/galleryController.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	<link rel="stylesheet" type="text/css" href="css/header.css" />
 	<link rel="stylesheet" type="text/css" href="lib/bower_components/bootstrap/dist/css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="lib/bower_components/angular-ui-select/dist/select.css" />
 </head>

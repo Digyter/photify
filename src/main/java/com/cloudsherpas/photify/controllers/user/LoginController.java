@@ -24,7 +24,7 @@ public class LoginController {
 	    	userDetails.setFederatedIdentity(currentUser.getFederatedIdentity());
 	    	userDetails.setName(currentUser.getNickname());
 	    	userDetails.setEmail(currentUser.getEmail());
-	    	userDetails.setLogoutURL("index.jsp");	   
+	    	userDetails.setLogoutURL(userService.createLogoutURL("index.jsp"));	   
 	    	userDetails.isUserLoggedIn = true;
 	    } else {	
 	    	userDetails.setLoginURL(userService.createLoginURL("index.jsp"));	    	   	
