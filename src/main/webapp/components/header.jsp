@@ -1,5 +1,5 @@
 <div>
-	<label class="header-title">photify</label> 
+	<label class="header-title">Photify</label> 
 	<span class="user-details">
 		<label>{{userEmail}}</label> 
 		<a href="{{logoutURL}}">
