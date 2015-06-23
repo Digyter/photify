@@ -107,11 +107,13 @@ function galleryController(scope, rootScope, modal, albumService, imageService,
 		});
 	}
 
-	// get user details
-	userService.getUserDetails().then(function(response) {
-		if (response.data.isUserLoggedIn) {
-			scope.isLoggedIn = true;
+	//get user details
+	userService.getUserDetails().then(function(response){		
+		if(response.data.isUserLoggedIn){	
+			scope.isLoggedIn = true;			
 			rootScope.userKey = response.data.id;
+			rootScope.userEmail = response.data.email;
+			rootScope.logoutURL = response.data.logoutURL;
 		}
 	});
 
