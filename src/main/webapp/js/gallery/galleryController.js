@@ -10,27 +10,21 @@ function galleryController(scope,rootScope,modal, albumService, imageService, us
 	
 	//get user details
 	userService.getUserDetails().then(function(response){		
-		if(response.data){			
-			userDetails = response.data;
-			if(false){
-				scope.isLoggedIn = false;
-				window.location.href = userDetails.signinUrl;	
-			}else{
-				scope.isLoggedIn = true;
-				
-				//retrieve albums
-				albumService.listAlbums(1).then(function(response){
-					scope.albumList = response.data;
-				});
-				
-				//retrieve images
-				imageService.listImages(1).then(function(response){
-					scope.imageList = response.data;
-				});
-			}		
+		if(response.data.isUserLoggedIn){	
+			scope.isLoggedIn = true;			
+			rootScope.userKey = response.data.id;	
 		}
 	});	
-
+	
+	//retrieve albums
+	albumService.listAlbums(1).then(function(response){
+		scope.albumList = response.data;
+	});
+	
+	//retrieve images
+	imageService.listImages(1).then(function(response){
+		scope.imageList = response.data;
+	});
 	
 	scope.openCreateAlbumModal = function(){
 		var modalInstance = modal.open({

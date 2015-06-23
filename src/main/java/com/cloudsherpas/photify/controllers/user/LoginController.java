@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cloudsherpas.photify.model.user.UserDetails;
-import com.cloudsherpas.photify.model.user.UserModel;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -18,17 +17,17 @@ public class LoginController {
 		
 		UserService userService = UserServiceFactory.getUserService();
 	    User currentUser = userService.getCurrentUser();
-	    UserDetails userDetails = new UserDetails();    
+	    UserDetails userDetails = new UserDetails();   
 	    
-	    if (userService.isUserLoggedIn()) {	    	
-	    	UserModel userModel = new UserModel();
-	    	userModel.setId(currentUser.getUserId());
-	    	userModel.setFederatedIdentity(currentUser.getFederatedIdentity());
-	    	userModel.setName(currentUser.getNickname());
-	    	userModel.setEmail(currentUser.getEmail());
-	    	userDetails.setUser(userModel);
+	    if (userService.isUserLoggedIn()) {	
+	    	userDetails.setId(currentUser.getUserId());
+	    	userDetails.setFederatedIdentity(currentUser.getFederatedIdentity());
+	    	userDetails.setName(currentUser.getNickname());
+	    	userDetails.setEmail(currentUser.getEmail());
+	    	userDetails.setLogoutURL("index.jsp");	   
+	    	userDetails.isUserLoggedIn = true;
 	    } else {	
-	    	userDetails.setSigninUrl(userService.createLoginURL("index.jsp"));	    	   	
+	    	userDetails.setLoginURL(userService.createLoginURL("index.jsp"));	    	   	
 	    }	    
 		return userDetails;
 	}
