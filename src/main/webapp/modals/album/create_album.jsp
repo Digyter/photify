@@ -4,11 +4,11 @@
 <div class="modal-body">
 	<p>
 		<label>Name:</label>
-		<input type="text" />
+		<input type="text" ng-bind="albumName" />
 	</p>
 </div>
 <div class="modal-footer">
-	<button type="button" class="btn btn-primary">
+	<button type="button" class="btn btn-primary" ng-click="createAlbum()">
     	Save
     </button>
     <button type="button" class="btn btn-primary" ng-click="cancel()">

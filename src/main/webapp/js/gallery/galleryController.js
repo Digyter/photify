@@ -6,25 +6,66 @@ function galleryController(scope,rootScope,modal, albumService, imageService, us
 	scope.albumList = [];
 	scope.imageList = [];
 	scope.currentImageUrl = '';
+	scope.currentAlbum = '';
 	scope.isLoggedIn = false;
 	
-	//get user details
-	userService.getUserDetails().then(function(response){		
-		if(response.data.isUserLoggedIn){	
-			scope.isLoggedIn = true;			
-			rootScope.userKey = response.data.id;	
-		}
-	});	
+	scope.switchAlbum = function(album){
+		scope.currentAlbum = album.key;
+		
+		//retrieve images
+		imageService.listImages(album.key).then(function(response){
+			scope.imageList = response.data;
+		});
+	}
 	
-	//retrieve albums
-	albumService.listAlbums(1).then(function(response){
-		scope.albumList = response.data;
-	});
+	scope.setPreviewImageUrl = function(image){
+		scope.currentImageUrl = image.url;
+	}
 	
-	//retrieve images
-	imageService.listImages(1).then(function(response){
-		scope.imageList = response.data;
-	});
+	scope.listAlbums = function(){
+		//retrieve albums
+		albumService.listAlbums(rootScope.userKey).then(function(response){
+			scope.albumList = response.data;
+		});
+	}	
+	
+	//Modals
+	scope.openCreateAlbumModal = function(){
+		var modalInstance = modal.open({
+			animation: scope.animationsEnabled,
+			templateUrl: 'modals/album/create_album.jsp',
+			controller: 'albumModalController'
+		});
+	}
+	
+	scope.openDeleteAlbumModal = function(){
+		var modalInstance = modal.open({
+			animation: scope.animationsEnabled,
+			templateUrl: 'modals/album/delete_album.jsp',
+			controller: 'albumModalController'
+		});
+	}
+	
+	scope.openAddImageModal = function(){
+		var modalInstance = modal.open({
+			animation: scope.animationsEnabled,
+			templateUrl: 'modals/image/add_image.jsp',
+			controller: 'imageModalController',
+			resolve:{
+				albumList: function(){
+					return scope.albumList;
+				}
+			}
+		});
+	}
+	
+	scope.openShareAlbumModal = function(){
+		var modalInstance = modal.open({
+			animation: scope.animationsEnabled,
+			templateUrl: 'modals/album/share_album.jsp',
+			controller: 'albumModalController'
+		});
+	}
 	
 	scope.openCreateAlbumModal = function(){
 		var modalInstance = modal.open({
@@ -55,7 +96,22 @@ function galleryController(scope,rootScope,modal, albumService, imageService, us
 		});
 	}
 	
-	scope.setPreviewImageUrl = function(image){
-		scope.currentImageUrl = image.url;
+	scope.openShareAlbumModal = function(){
+		var modalInstance = modal.open({
+			animation: scope.animationsEnabled,
+			templateUrl: 'modals/album/share_album.jsp',
+			controller: 'albumModalController'
+		});
 	}
+	
+	//get user details
+	userService.getUserDetails().then(function(response){		
+		if(response.data.isUserLoggedIn){	
+			scope.isLoggedIn = true;			
+			rootScope.userKey = response.data.id;	
+		}
+	});	
+	
+	//test
+	scope.listAlbums();
 }

@@ -1,6 +1,6 @@
 <div class="album_info">
 	<span class="title">Album 1</span>
-	<button type="button" class="btn btn-primary" ng-click="openShareModal()">
+	<button type="button" class="btn btn-primary" ng-click="openShareAlbumModal()">
 		Share
 	</button>
 </div>
