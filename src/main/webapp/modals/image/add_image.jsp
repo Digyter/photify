@@ -4,14 +4,15 @@
 <div class="modal-body">
 	<p>
 		<label>Name:</label>
-		<input type="text" />
+		<input type="text" ng-model="imageName"/>
 	</p>
 	<p>
 		<label>URL:</label>
-		<input type="text" />
+		<input type="text" ng-model="imageUrl"/>
 	</p>
 	<p>
 		<label>Album:</label>
+		<p>Selected: {{album.selected.key}}</p>
 		<ui-select ng-model="album.selected" 
 			theme="bootstrap"
 			ng-disabled="disabled"
@@ -26,7 +27,7 @@
 	</p>
 </div>
 <div class="modal-footer">
-	<button type="button" class="btn btn-primary">
+	<button type="button" class="btn btn-primary" ng-click="addImage()">
     	Save
     </button>
     <button type="button" class="btn btn-primary" ng-click="cancel()">

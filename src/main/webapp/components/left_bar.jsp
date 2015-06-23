@@ -5,7 +5,7 @@
 	    	New
 	    </button>
 	</div>
-	<span class="btn btn-default" ng-repeat="album in albumList" ng-click="switchAlbum(album)">
+	<span class="btn btn-default" ng-repeat="album in albumList track by album.key" ng-click="switchAlbum(album)">
 		{{album.name}}
 		<button type="button" class="close" aria-label="Close" ng-click="openDeleteAlbumModal(1,1)"><span aria-hidden="true">&times;</span></button>
 	</span>

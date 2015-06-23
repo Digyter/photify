@@ -4,7 +4,7 @@
 <div class="modal-body">
 	<p>
 		<label>Name:</label>
-		<input type="text" ng-bind="albumName" />
+		<input type="text" ng-model="albumName" />
 	</p>
 </div>
 <div class="modal-footer">

@@ -13,6 +13,6 @@ function albumModalController(scope, rootScope, modalInstance, albumService){
 	}
 	
 	scope.cancel = function () {
-		modalInstance.close();
+		modalInstance.dismiss('cancel');
 	};
 }
