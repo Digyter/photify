@@ -7,7 +7,7 @@ function albumService(http) {
 	var staticUserKey = 'agxzfnBob3RpZnlkZXZyDAsSBFVzZXIY4_N7DA';
 		
 	this.createAlbum = function(userKey, albumName){
-		userKey = staticUserKey; //remove this once user is implemented
+		//userKey = staticUserKey; //remove this once user is implemented
 		http.post(restServerUrl + '/album/add', {album_name:albumName,user_key:userKey}).
 		  success(function(data, status, headers, config) {
 		    console.log(data);

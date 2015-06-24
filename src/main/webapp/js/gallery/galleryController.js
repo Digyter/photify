@@ -83,17 +83,17 @@ function galleryController(scope, rootScope, modal, albumService, imageService,
 			controller : 'albumModalController'
 		});
 	}
-
-	//get user details
-	userService.getUserDetails().then(function(response){		
-		if(response.data.isUserLoggedIn){	
-			scope.isLoggedIn = true;			
-			rootScope.userKey = response.data.id;
+	
+	userService.getCurrentUser().then(function(response){
+		if(response.data.isUserLoggedIn){				
+			scope.isLoggedIn = true;		
 			rootScope.userEmail = response.data.email;
 			rootScope.logoutURL = response.data.logoutURL;
+			rootScope.userKey = response.data.userKey;	
+			// test
+			scope.listAlbums();
 		}
 	});
-
-	// test
-	scope.listAlbums();
-}
+	
+	
+} 
