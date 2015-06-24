@@ -14,7 +14,8 @@
 	<script src="lib/bower_components/angular-ui-select/dist/select.min.js"></script>
 	<script src="js/photify.module.js"></script>
 	<script src="js/album/albumService.js"></script>
-	<script src="js/album/albumModalController.js"></script>
+	<script src="js/album/createAlbumModalController.js"></script>
+	<script src="js/album/deleteAlbumModalController.js"></script>
 	<script src="js/image/imageService.js"></script>
 	<script src="js/user/userService.js"></script>
 	<script src="js/image/imageModalController.js"></script>
@@ -43,7 +44,7 @@
 			<div class="bottomBar">
 				<div class="infoBar">
 				</div>
-				<div class="pictureList">
+				<div class="pictureList" ng-show="currentAlbum">
 					<div ng-include src="'components/picture_list.jsp'"></div>
 				</div>
 			</div>

@@ -12,15 +12,13 @@
 	</p>
 	<p>
 		<label>Album:</label>
-		<p>Selected: {{album.selected.key}}</p>
 		<ui-select ng-model="album.selected" 
 			theme="bootstrap"
-			ng-disabled="disabled"
             reset-search-input="false"
             style="width: 300px;"
             title="Choose an album">
 			<ui-select-match placeholder="Enter an album">{{$select.selected.name}}</ui-select-match>
-			<ui-select-choices repeat="album in albumList">
+			<ui-select-choices repeat="album in albumList track by album.key">
 	     		<span ng-bind-html="album.name | highlight: $select.search"></span>
 	    	</ui-select-choices>
         </ui-select>

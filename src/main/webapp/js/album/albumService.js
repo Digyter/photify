@@ -4,9 +4,9 @@ angular
 
 function albumService(http) {
 	var restServerUrl = 'http://1-dot-photifydev.appspot.com';
-	var staticUserKey = 'agxzfnBob3RpZnlkZXZyDQsSBFVzZXIYoa71AQw';
+	var staticUserKey = 'agxzfnBob3RpZnlkZXZyDAsSBFVzZXIY4_N7DA';
 		
-	this.createAlbum = function(albumName, userKey){
+	this.createAlbum = function(userKey, albumName){
 		userKey = staticUserKey; //remove this once user is implemented
 		http.post(restServerUrl + '/album/add', {album_name:albumName,user_key:userKey}).
 		  success(function(data, status, headers, config) {
@@ -17,15 +17,15 @@ function albumService(http) {
 		  });
 	}
 	
-	this.deleteAlbum = function(albumKey, userKey){
-		http.post(restServerUrl + '/deleteAlbum', {album_key:albumKey,user_key:userKey}).
+	this.deleteAlbum = function(userKey, albumKey){
+		userKey = staticUserKey; //remove this once user is implemented
+		console.log("userKey: " + userKey + " albumKey: " + albumKey);
+		http.post(restServerUrl + '/album/delete', {album_key:albumKey,user_key:userKey}).
 		  success(function(data, status, headers, config) {
-		    // this callback will be called asynchronously
-		    // when the response is available
+		    console.log(data);
 		  }).
 		  error(function(data, status, headers, config) {
-		    // called asynchronously if an error occurs
-		    // or server returns response with an error status.
+		    console.log(data);
 		  });
 	}
 	

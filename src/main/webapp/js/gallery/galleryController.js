@@ -37,54 +37,31 @@ function galleryController(scope, rootScope, modal, albumService, imageService,
 	scope.openCreateAlbumModal = function() {
 		var modalInstance = modal.open({
 			templateUrl : 'modals/album/create_album.jsp',
-			controller : 'albumModalController',
+			controller : 'createAlbumModalController',
 		});
 
-		modalInstance.result.then(function(selectedItem) {
-			scope.selected = selectedItem;
+		modalInstance.result.then(function() {
 			scope.listAlbums();
 		}, function() {
 			console.log('Modal dismissed');
 		});
 	}
 
-	scope.openDeleteAlbumModal = function() {
+	scope.openDeleteAlbumModal = function(album) {
 		var modalInstance = modal.open({
 			templateUrl : 'modals/album/delete_album.jsp',
-			controller : 'albumModalController'
-		});
-	}
-
-	scope.openAddImageModal = function() {
-		var modalInstance = modal.open({
-			templateUrl : 'modals/image/add_image.jsp',
-			controller : 'imageModalController',
-			resolve : {
-				albumList : function() {
-					return scope.albumList;
+			controller : 'deleteAlbumModalController',
+			resolve:{
+				selectedAlbum: function(){
+					return album;
 				}
 			}
 		});
-	}
-
-	scope.openShareAlbumModal = function() {
-		var modalInstance = modal.open({
-			templateUrl : 'modals/album/share_album.jsp',
-			controller : 'albumModalController'
-		});
-	}
-
-	scope.openCreateAlbumModal = function() {
-		var modalInstance = modal.open({
-			templateUrl : 'modals/album/create_album.jsp',
-			controller : 'albumModalController'
-		});
-	}
-
-	scope.openDeleteAlbumModal = function() {
-		var modalInstance = modal.open({
-			templateUrl : 'modals/album/delete_album.jsp',
-			controller : 'albumModalController'
+		
+		modalInstance.result.then(function() {
+			scope.listAlbums();
+		}, function() {
+			console.log('Modal dismissed');
 		});
 	}
 
